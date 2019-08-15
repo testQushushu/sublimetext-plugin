@@ -6,9 +6,15 @@ WARNING: This is a beta version. Many features are currently under development.
 
 ## Install
 
-![writing javascript code with aiXcoder](https://github.com/aixcoder-plugin/sublimetext-plugin/raw/master/images/js_example.gif)
+Windows:
+
+```bat
+git clone https://github.com/aixcoder-plugin/sublimetext-plugin.git "%AppData%\Sublime Text 3\Packages\"
+```
 
 ## Features
+
+![writing javascript code with aiXcoder](https://github.com/aixcoder-plugin/sublimetext-plugin/raw/master/images/js_example.gif)
 
 1. Make sure you have internet access.
 2. If you need to use proxy, it is not supported yet.
