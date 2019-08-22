@@ -9,7 +9,7 @@ WARNING: This is a beta version. Many features are currently under development.
 Windows:
 
 ```bat
-git clone https://github.com/aixcoder-plugin/sublimetext-plugin.git "%AppData%\Sublime Text 3\Packages\"
+git clone https://github.com/aixcoder-plugin/sublimetext-plugin.git "%AppData%\Sublime Text 3\Packages\aiXcoder"
 ```
 
 ## Features
