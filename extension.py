@@ -8,7 +8,7 @@ import functools
 import re
 import uuid
 import hashlib
-# import webbrowser
+import webbrowser
 
 from aiXcoder.typescript import TypeScriptLangUtil
 from aiXcoder.javascript import JavaScriptLangUtil
@@ -69,9 +69,13 @@ endpoint = "https://api.aixcoder.com/predict"
 
 def on_nav(view, href):
     # p = view.selection[0].a
-    print(href)
-    view.run_command("insert", {"characters": href[5:]})
-    view.hide_popup()
+    pattern = re.compile('https://www.aixcoder.com/#/Guide')
+    match = pattern.match(href)
+    if match:
+        jump_to_web()
+    else: 
+        view.run_command("insert", {"characters": href[5:]})
+        view.hide_popup()
 
 
 def on_hide(view):
@@ -158,7 +162,7 @@ def render_to_html(lang_util, r, filter_text="", selected=0, move_only=False):
                         r_map.append(
                             (single_sort_word[len(current_filter):], ''))
     lis = ""
-    btmText = "<div style='font-size: 12px;line-height: 18px;margin-top: 4px;margin-left: 150%;'><span style='padding-left: 8px;position: relative;top: -2px;color: #81837C;'>aiXcoder智能编程助手</span></div>"
+    btmText = "<div style='font-size: 12px;line-height: 18px;margin-top: 4px;margin-left: 150%;'><span style='padding-left: 8px;position: relative;top: -2px;color: #81837C;'><a href='https://www.aixcoder.com/#/Guide' style='color: #81837C;text-direction: none;'>aiXcoder智能编程助手</a></span></div>"
     r = 0
     if selected < 0:
         selected = 0
@@ -197,8 +201,8 @@ def show(html, view):
         popup_open = False
         view.hide_popup()
 
-# def jump_to_web():
-    # webbrowser.open("https://www.aixcoder.com/#/Guide")
+def jump_to_web():
+    webbrowser.open("https://www.aixcoder.com/#/Guide")
 
 class AiXPredictThread(threading.Thread):
     def __init__(self, lang_util, view, values, headers, *args, **kwargs):
